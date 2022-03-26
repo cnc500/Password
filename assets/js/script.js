@@ -64,7 +64,7 @@ function writePassword() { //Their code
 //   generate random character from random characters in password array
 // var inputNumberChar=[numberChar]
 //   else alert using special char to generate pw and go to for loop to generate remaining characters
-  var useSpecialChar = false;
+  //var useSpecialChar = false;
   numberPasswordChar = 0;
   if (useLowerCase || useUpperCase || useNumbers) {
     useSpecialChar = window.confirm ("Would you like to use special characters in your password?  If not, press cancel.");
@@ -86,22 +86,13 @@ function writePassword() { //Their code
 // Receive input via prompt of how many characters password will be from 8 to 128
 
   var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
+
+    
   for (i=1;i<numberPasswordChar;i++) {
+  
     //add in correction alert if number is not from 8 to 128
-// generate random lowercase letter
-    randomNumber1 = Math.floor(Math.random()*26);
-    lowercaseFirst=lowerCase[randomNumber1];
-// generate random uppercase letters
-    randomNumber2 = Math.floor(Math.random()*26);
-    uppercaseFirst=upperCase[randomNumber2];
-// generate random numbers
-    randomNumber3 = Math.floor(Math.random()*10);
-    numberFirst = numbers[randomNumber3];
-// generate random special characters
-    randomNumber4 = Math.floor(Math.random()*10);
-    specialCharFirst = specialChar[randomNumber4];
-// first character possibilities of password
-    passwordData = [lowercaseFirst,uppercaseFirst,numberFirst,specialCharFirst];
+
+
     randomNumber = Math.floor(Math.random()*dataNumber);
 // Generates next password character
     var nextPasswordChar = passwordData[randomNumber];
