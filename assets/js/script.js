@@ -88,7 +88,11 @@ function writePassword() { //Their code
   var password = [firstPasswordChar]
 // Receive input via prompt of how many characters password will be from 8 to 128
   var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
-//add in correction alert if number is not from 8 to 128
+//alert if number is not from 8 to 128
+    if ((numberPasswordChar < 8) || (numberPasswordChar > 128)) {
+      numberPasswordChar = window.prompt("You chose " + numberPasswordChar +". Please enter number of characters that you want your password to be from 8 to 128." )
+
+    }
     randomNumber = Math.floor(Math.random()*dataNumber);
 
   for (i=1;i<numberPasswordChar;i++) {
