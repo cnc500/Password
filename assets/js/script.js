@@ -24,15 +24,36 @@ function writePassword() { //Their code
   var specialCharFirst = specialChar[randomNumber4];
 // first character possibilities of password
   var passwordData = [lowercaseFirst,uppercaseFirst,numberFirst,specialCharFirst];
-// prompt for using lowercase letters
+// prompts for using lowercase letters, uppercase letters, numbers and special characters.  If user chooses no 
+// lowercase letters, uppercase letters or numbers, user must use only special characters in password.
   var useLowerCase = window.confirm ("Would you like to use lowercase letters in your password?  If not, press cancel.");
+  var useUpperCase = window.confirm ("Would you like to use uppercase letters in your password?  If not, press cancel.");
+  var useNumbers = window.confirm ("Would you like to use numbers in your password?  If not, press cancel.");
+  var useSpecialChar = window.confirm ("Would you like to use special characters in your password?  If not, press cancel.");
+  if (!useLowerCase && !useUpperCase && !useNumbers && !useSpecialChar) {
+    window.alert("You must choose at least one type of character to generate a password!");
+    useLowerCase = window.confirm ("Would you like to use lowercase letters in your password?  If not, press cancel.");
+    useUpperCase = window.confirm ("Would you like to use uppercase letters in your password?  If not, press cancel.");
+    useNumbers = window.confirm ("Would you like to use numbers in your password?  If not, press cancel.");
+    useSpecialChar = window.confirm ("Would you like to use special characters in your password?  If not, press cancel.");
+  }
+// Receive input via prompt of how many characters password will be from 8 to 128
+  var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
+  console.log(useLowerCase);
+  console.log(useUpperCase);
+  console.log(useNumbers);
+  console.log(useSpecialChar);
+  
+//prompt again if number is not from 8 to 128
+    if ((numberPasswordChar < 8) || (numberPasswordChar > 128)) {
+      numberPasswordChar = window.prompt("You chose " + numberPasswordChar +". Please enter number of characters that you want your password to be from 8 to 128." );
+    }
 // if not lowercase than delete lowercaseFirst and decrease dataTypes by 1
     if (!useLowerCase) {
       dataNumber = dataNumber - 1;
       passwordData.shift();
     }
-// prompt for using uppercase letters
-  var useUpperCase = window.confirm ("Would you like to use uppercase letters in your password?  If not, press cancel.");
+  
 // if not uppercase than delete uppercaseFirst from password array and decrease dataTypes by 1
   if (!useUpperCase) {
       dataNumber = dataNumber - 1;
@@ -43,8 +64,6 @@ function writePassword() { //Their code
         }
   }
   console.log(passwordData);  
-// prompt for using numbers
-  var useNumbers = window.confirm ("Would you like to use numbers in your password?  If not, press cancel.");
 // if no numbers, than delete numberFirst and decrease dataTypes by 1
         if (!useNumbers) {
           dataNumber = dataNumber - 1;
@@ -67,17 +86,13 @@ function writePassword() { //Their code
 //   else alert using special char to generate pw and go to for loop to generate remaining characters
   //var useSpecialChar = false;
   //numberPasswordChar = 0;
-  if (useLowerCase || useUpperCase || useNumbers) {
-    var useSpecialChar = window.confirm ("Would you like to use special characters in your password?  If not, press cancel.");
+  
     if (!useSpecialChar) {
       dataNumber = dataNumber - 1;
       passwordData.pop();
     }
-  }
-  else {
-    useSpecialChar = true;
-    window.alert("Your password will be generated using only special characters.");
-    }
+  
+  
     console.log(dataNumber);
     console.log(passwordData);
 // Create random first character of password from up to four random that may include a lowercase letter, an uppercase letter, 
@@ -87,14 +102,6 @@ function writePassword() { //Their code
 //create password string array
   var password = [firstPasswordChar]
 // Receive input via prompt of how many characters password will be from 8 to 128
-  var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
-//alert if number is not from 8 to 128
-    if ((numberPasswordChar < 8) || (numberPasswordChar > 128)) {
-      numberPasswordChar = window.prompt("You chose " + numberPasswordChar +". Please enter number of characters that you want your password to be from 8 to 128." )
-
-    }
-    randomNumber = Math.floor(Math.random()*dataNumber);
-
   for (i=1;i<numberPasswordChar;i++) {
     randomNumber = Math.floor(Math.random()*dataNumber);
    /* if (useLowerCase) {
