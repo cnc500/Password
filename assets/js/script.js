@@ -4,12 +4,9 @@ var numbers=["0","1","2","3","4","5","6","7","8","9"];
 var specialChar=["!","@","#","$","%","^","&","(",")","*"];
 var dataNumber=4;
 var generateBtn = document.querySelector("#generate");
-
 // Write password to the #password input
 function writePassword() { //Their code
   console.log("test");
-   // var password = generatePassword(); //Their code  should there be a {} instead of ; ???
-
 // generate random lowercase letter
   var randomNumber1 = Math.floor(Math.random()*26);
   var lowercaseFirst=lowerCase[randomNumber1];
@@ -30,9 +27,7 @@ function writePassword() { //Their code
     if (!useLowerCase) {
       dataNumber = dataNumber - 1;
       passwordData.shift();
-      console.log(passwordData);
     }
-
 // prompt for using uppercase letters
   var useUpperCase = window.confirm ("Would you like to use uppercase letters in your password?  If not, press cancel.");
 // if not uppercase than delete uppercaseFirst from password array and decrease dataTypes by 1
@@ -76,7 +71,6 @@ function writePassword() { //Their code
   else {
     window.alert("Your password will be generated using only special characters.");
     }
-  
 // Create random first character of password from up to four random that may include a lowercase letter, an uppercase letter, 
 // a number and a special character.
   randomNumber = Math.floor(Math.random()*dataNumber);
@@ -84,41 +78,21 @@ function writePassword() { //Their code
 //create password string array
   var password = [firstPasswordChar]
 // Receive input via prompt of how many characters password will be from 8 to 128
-
   var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
+//add in correction alert if number is not from 8 to 128
+    randomNumber = Math.floor(Math.random()*dataNumber);
 
-    
   for (i=1;i<numberPasswordChar;i++) {
-  
-    //add in correction alert if number is not from 8 to 128
-
-
     randomNumber = Math.floor(Math.random()*dataNumber);
 // Generates next password character
     var nextPasswordChar = passwordData[randomNumber];
     password.push(nextPasswordChar);
-    console.log(password);
   }
 //to get rid of commas in password
-password = password.join("");
+  password = password.join("");
 
-  randomNumber = Math.floor(Math.random()*dataNumber);
-  var firstPasswordChar = passwordData[randomNumber];
-
-  
-
-    console.log(password);
-        
-
-
-// for loop using i=1; x < numberChar; i++ adding random character to password array in each iteration
-
-
-  var passwordText = document.querySelector("#password"); //Their code
-
-  passwordText.value = password; //Their code
-
+  var passwordText = document.querySelector("#password"); 
+  passwordText.value = password; 
 }
+generateBtn.addEventListener("click", writePassword);  
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);  //Their code
