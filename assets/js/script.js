@@ -2,22 +2,8 @@ var lowerCase=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","
 var upperCase=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numbers=["0","1","2","3","4","5","6","7","8","9"];
 var specialChar=["!","@","#","$","%","^","&","(",")","*"];
-
 var dataNumber=4;
-
 var generateBtn = document.querySelector("#generate");
-
-
-
-
-
-
-
-
-// generate random character from 4 cases first
-
-// for loop using i=1; x < numberChar; i++ adding random character to password array in each iteration
-
 
 // Write password to the #password input
 function writePassword() { //Their code
@@ -37,14 +23,14 @@ function writePassword() { //Their code
   var randomNumber4 = Math.floor(Math.random()*10);
   var specialCharFirst = specialChar[randomNumber4];
 // first character possibilities of password
-  var password = [lowercaseFirst,uppercaseFirst,numberFirst,specialCharFirst];
+  var passwordData = [lowercaseFirst,uppercaseFirst,numberFirst,specialCharFirst];
 // prompt for using lowercase letters
   var useLowerCase = window.confirm ("Would you like to use lowercase letters in your password?  If not, press cancel.");
 // if not lowercase than delete lowercaseFirst and decrease dataTypes by 1
     if (!useLowerCase) {
       dataNumber = dataNumber - 1;
-      password.shift();
-      console.log(password);
+      passwordData.shift();
+      console.log(passwordData);
     }
 
 // prompt for using uppercase letters
@@ -53,9 +39,9 @@ function writePassword() { //Their code
   if (!useUpperCase) {
       dataNumber = dataNumber - 1;
       if (!useLowerCase) {
-        password.shift();
+        passwordData.shift();
       } else {
-        password = password.splice(1,1);
+        passwordData.splice(1,1);
         }
   }  
 // prompt for using numbers
@@ -65,12 +51,12 @@ function writePassword() { //Their code
           dataNumber = dataNumber - 1;
         
           if (!useUpperCase && !useLowerCase) {
-            password.shift();
+            passwordData.shift();
           } else if (!useUpperCase || !useLowerCase) {
-              password = password.splice(1,1);
+              passwordData.splice(1,1);
             }
             else {
-              password = password.splice(2,1);
+              passwordData.splice(2,1);
             }
         }
 // if lowercase, uppercase, or number is true, 
@@ -79,18 +65,58 @@ function writePassword() { //Their code
 // var inputNumberChar=[numberChar]
 //   else alert using special char to generate pw and go to for loop to generate remaining characters
   var useSpecialChar = false;
+  numberPasswordChar = 0;
   if (useLowerCase || useUpperCase || useNumbers) {
     useSpecialChar = window.confirm ("Would you like to use special characters in your password?  If not, press cancel.");
+    if (!useSpecialChar) {
+      dataNumber = dataNumber - 1;
+      passwordData.pop();
+    }
   }
   else {
     window.alert("Your password will be generated using only special characters.");
-    
-  }
-    if (!useSpecialChar) {
-      dataNumber = dataNumber - 1;
-      password.pop();
     }
-    
+  
+// Create random first character of password from up to four random that may include a lowercase letter, an uppercase letter, 
+// a number and a special character.
+  randomNumber = Math.floor(Math.random()*dataNumber);
+  var firstPasswordChar = passwordData[randomNumber];
+//create password string array
+  var password = [firstPasswordChar]
+// Receive input via prompt of how many characters password will be from 8 to 128
+
+  var numberPasswordChar = window.prompt("Please enter number of characters that you want your password to be from 8 to 128.");
+  for (i=1;i<numberPasswordChar;i++) {
+    //add in correction alert if number is not from 8 to 128
+// generate random lowercase letter
+    randomNumber1 = Math.floor(Math.random()*26);
+    lowercaseFirst=lowerCase[randomNumber1];
+// generate random uppercase letters
+    randomNumber2 = Math.floor(Math.random()*26);
+    uppercaseFirst=upperCase[randomNumber2];
+// generate random numbers
+    randomNumber3 = Math.floor(Math.random()*10);
+    numberFirst = numbers[randomNumber3];
+// generate random special characters
+    randomNumber4 = Math.floor(Math.random()*10);
+    specialCharFirst = specialChar[randomNumber4];
+// first character possibilities of password
+    passwordData = [lowercaseFirst,uppercaseFirst,numberFirst,specialCharFirst];
+    randomNumber = Math.floor(Math.random()*dataNumber);
+// Generates next password character
+    var nextPasswordChar = passwordData[randomNumber];
+    password.push(nextPasswordChar);
+    console.log(password);
+  }
+//to get rid of commas in password
+password = password.join("");
+
+  randomNumber = Math.floor(Math.random()*dataNumber);
+  var firstPasswordChar = passwordData[randomNumber];
+
+  
+
+    console.log(password);
         
 
 
