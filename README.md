@@ -35,4 +35,8 @@ The deployment of the webpage was successful and is at https://cnc500.github.io/
 
 A screenshot of it is below:
 
+[screenshot](password.png)
+
+
+
 
