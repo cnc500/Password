@@ -37,6 +37,12 @@ A screenshot of it is below:
 
 [screenshot](password.png)
 
+Credits and References
+
+https://thispointer.com/convert-array-to-string-without-comma-in-javascript/  for join in js
+
+Travis Cook - TA - for help and instruction of what special characters to include
+
 
 
 
