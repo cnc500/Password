@@ -30,7 +30,7 @@ from 8 to 128 characters based upon user selected types of characters!
 
 Deployment
 
-The deployment of the webpage was successful and is at 
+The deployment of the webpage was successful and is at https://cnc500.github.io/password/
 
 
 A screenshot of it is below:
